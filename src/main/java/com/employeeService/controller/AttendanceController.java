@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -35,11 +36,15 @@ public class AttendanceController {
         return "/attendanceForm";
     }
     @RequestMapping("/addAttendance")
-    String addAttendance( @Valid @ModelAttribute("attendance") AttendanceFormDTO attendance ,BindingResult bindingResult) throws ParseException {
-if(bindingResult.hasErrors())
-    return "/attendanceForm";
+    String addAttendance(@ModelAttribute("attendance") @Validated AttendanceFormDTO attendance , BindingResult bindingResult) throws ParseException {
+System.out.println(">>>>>>>>>>>>"+attendance.getDateOfAttendanceMark());
+System.out.println(attendance.getNumberOfHours());
+
+
+        if(bindingResult.hasErrors())
+    return "redirect:/attendanceForm";
 else attendanceService.save(attendance);
-         return "/showEmployees";
+         return "redirect:/showEmployees";
 
 
     }

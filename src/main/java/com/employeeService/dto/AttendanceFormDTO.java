@@ -2,37 +2,30 @@ package com.employeeService.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Date;
 
+@Component
 public class AttendanceFormDTO {
 
-//@JsonFormat(pattern="yyyy-MM-dd")
+@JsonFormat(pattern="yyyy-MM-dd")
 @DateTimeFormat(pattern = "yyyy-MM-dd")
-@NotBlank(message = "cannot be blank")
-
-
+@NotNull(message = "cannot be blank")
     private LocalDate dateOfAttendanceMark;
     private int id;
 
 
 @Min(value = 0, message="cannot be negative")
 @Max(value=24,message="cannot exceeds 24")
-    private int numberOfHours;
-
-
-
-
-
+@NotNull(message = "cannot be empty")
+private int numberOfHours;
 
     public AttendanceFormDTO() {
        super();
     }
-
 
     public int getId() {
         return id;

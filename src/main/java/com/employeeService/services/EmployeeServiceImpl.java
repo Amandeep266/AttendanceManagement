@@ -34,8 +34,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     Employee savedEmployee = employeeRepository.save(employee);
     System.out.println(">>>>>>>>>>>>>>saved employee id" + savedEmployee.getId());
-    AttendanceId id = new AttendanceId(savedEmployee.getId(), month);
-    Attendance attendance = new Attendance(id, year, 1, date.getDayOfMonth(), 0);
+    AttendanceId id = new AttendanceId(savedEmployee.getId(), month, date.getDayOfMonth(),year);
+    Attendance attendance = new Attendance(id, 1, 0);
 
     attendanceService.addAttendanceOfEmployee(attendance);
 

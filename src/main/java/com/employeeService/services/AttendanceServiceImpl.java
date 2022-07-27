@@ -28,26 +28,30 @@ public class AttendanceServiceImpl implements AttendanceService {
 //                parse(attendanceFormDTO.getDateOfAttendanceMark());
 //        String markedDate1= new SimpleDateFormat("yyyy-MM-dd").format(markedDate);
 
-        DateTimeFormatter dateFormat= DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter dateFormat= DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String strDate = dateFormat.format(attendanceFormDTO.getDateOfAttendanceMark());
         LocalDate dateToValidate = LocalDate.parse(strDate);
         LocalDate nextDayOfCurrent=LocalDate.now().plusDays(1);
         LocalDate todayDate=LocalDate.now();
         LocalDate beforeCurrentDate= LocalDate.now().minusDays(2);
         long daysBetween = DAYS.between(dateToValidate, todayDate);
+        System.out.println("DIB : "+daysBetween);
 
         if(daysBetween<=2 && daysBetween>=0)
         {
           int present=  markPresentOnNumberOfHours(attendanceFormDTO.getNumberOfHours());
           int lop=present==1?0:1;
-            AttendanceId id=new AttendanceId(attendanceFormDTO.getId(),dateToValidate.getMonth());
-Attendance attendance=new Attendance(id,dateToValidate.getYear(),lop,dateToValidate.getDayOfMonth(),present);
+            AttendanceId id=new AttendanceId(attendanceFormDTO.getId(),dateToValidate.getMonth(),dateToValidate.getDayOfMonth(), dateToValidate.getYear());
+            System.out.println(">>>>>>>>>"+id.toString()+">>>>>>>>");
+
+Attendance attendance=new Attendance(id,lop,present);
 attendanceRepository.save(attendance);
 return true;
         }
-        else
-        return false;
-
+        else {
+            System.out.println("cannot add employee");
+            return false;
+        }
 //        if (dateToValidate.before(nextDayOfCurrent.)
 //                && dateToValidate.after(beforeCurrentDate.getTime()))
     }
