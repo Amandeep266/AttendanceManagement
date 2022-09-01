@@ -49,7 +49,7 @@ attendanceRepository.save(attendance);
 return true;
         }
         else {
-            System.out.println("cannot add employee");
+            System.out.println("date of attendnace not valid!!!!");
             return false;
         }
 //        if (dateToValidate.before(nextDayOfCurrent.)

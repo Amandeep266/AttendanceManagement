@@ -4,11 +4,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Date;
-
-@Component
 public class AttendanceFormDTO {
 
 @JsonFormat(pattern="yyyy-MM-dd")

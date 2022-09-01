@@ -57,7 +57,7 @@
                 <div class="col-md-4 mb-3">
                     <label for="attendancedate">Date</label>
                     <div class="input-group">
-                        <input type="date"  pattern="DD-MM-YYYY" class="form-control" id="attendancedate"  required th:field="${attendance.dateOfAttendanceMark}" />
+                        <input type="date"  pattern="DD-MM-YYYY" class="form-control" id="attendancedate"   th:field="${attendance.dateOfAttendanceMark}" />
 <!--                        <div class="input-group-prepend">-->
 <!--                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>-->
 <!--                        </div>-->
@@ -67,9 +67,6 @@
             <div class="col-md-4 mb-2">
                 <label for="validationCustom02">Hours</label>
                 <input type="number" class="form-control" id="validationCustom02" th:field="${attendance.numberOfHours}" placeholder="Hours"  min=0 max=24  required />
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
 
 
