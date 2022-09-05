@@ -1,5 +1,6 @@
 package com.employeeService.services;
 
+import com.employeeService.entity.Attendance;
 import com.employeeService.entity.Employee;
 import org.springframework.http.HttpStatus;
 
@@ -12,5 +13,6 @@ void deleteById(int id);
 Employee findById(int id);
 List<Employee> getListOfEmployees();
 
+    List<Attendance> yearlyById(int id);
 }
 

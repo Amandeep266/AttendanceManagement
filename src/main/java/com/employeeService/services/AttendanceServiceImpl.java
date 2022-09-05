@@ -4,16 +4,12 @@ import com.employeeService.Repository.AttendanceRepository;
 import com.employeeService.dto.AttendanceFormDTO;
 import com.employeeService.entity.Attendance;
 import com.employeeService.entity.AttendanceId;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 import static java.time.temporal.ChronoUnit.DAYS;
@@ -68,7 +64,7 @@ return 0;
 }
     @Override
     public List<Attendance> getAttendanceById(int employeeId) {
-        return null;
+        return attendanceRepository.getMonthlyAttendanceList(employeeId);
     }
 
 

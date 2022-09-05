@@ -12,7 +12,7 @@
           crossorigin="anonymous">
     <br/>
     <br/>
-    <title>Monthly Attendance List</title>
+    <title>Yearly Attendance List</title>
     </div>
 
     <style>
@@ -23,31 +23,30 @@
 </head>
 <body>
 
-
+<!--<div th:each="attendance:${attendanceList}">-->
+<!--    <h1 th:text="${attendance.attendanceId.id"}></h1>-->
+<!--<td th:text="${attendance.attendanceId.year}"></td>-->
+<!--</div>-->
 <table class="table table-hover">
     <thead>
     <tr>
-        <th>Employee Id</th>
         <th>Month</th>
-        <th>Year</th>
         <th>Total</th>
         <th>Lop</th>
         <th>Present</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${monthlyAttendanceDTO}" var="attendance">
-        <tr>
-            <td>${attendance.id}</td>
-            <td>${attendance.month}</td>
-            <td>${attendance.year}</td>
-            <td>${attendance.total}</td>
-            <td>${attendance.lop}</td>
-            <td>${attendance.present}</td>
 
-        </tr>
-    </c:forEach>
-<!--    <tr>-->
+    <tr th:each="attendance:${attendanceList}">
+
+        <td th:text="${attendance.attendanceId.month}"></td>
+        <td th:text="${attendance.attendanceId.date}"></td>
+        <td th:text="${attendance.lop}"></td>
+        <td th:text="${attendance.present}"></td>
+
+
+    </tr>
 <!--        <td>John</td>-->
 <!--        <td>Doe</td>-->
 <!--        <td>john@example.com</td>-->

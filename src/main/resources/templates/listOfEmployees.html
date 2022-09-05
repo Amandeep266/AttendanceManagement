@@ -46,7 +46,7 @@
             <td th:text="${employee.department}"></td>
         <td><a th:href="@{/update(id=${employee.id})}"  class="btn btn-info btn-sm " >Update</a>
             <a th:href="@{/delete/{id}(id = ${employee.id})}" class="btn btn-danger btn-sm">Delete</a>
-        <a href="@{/attendance(id=${employee.id})}" class="btn btn-outline-primary btn-sm">Record</a>
+            <a th:href="@{/attendance/(id=${employee.id})}" class="btn btn-outline-primary btn-sm">Record</a>
             <a th:href="@{/attendanceForm/(id=${employee.id})}" class="btn btn-outline-success btn-sm">Mark</a>
 
         </td>

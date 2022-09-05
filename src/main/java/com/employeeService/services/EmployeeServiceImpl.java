@@ -1,5 +1,6 @@
 package com.employeeService.services;
 
+import com.employeeService.Repository.AttendanceRepository;
 import com.employeeService.Repository.EmployeeRepository;
 import com.employeeService.entity.Attendance;
 import com.employeeService.entity.AttendanceId;
@@ -18,7 +19,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     EmployeeRepository employeeRepository;
-
+    @Autowired
+    AttendanceRepository attendanceRepository;
     @Autowired
     AttendanceService attendanceService;
 
@@ -78,5 +80,9 @@ System.out.println(">>>>>>>>>>cannot delete>>>>>>.");
         return employeeList;
     }
 
-
+    @Override
+    public List<Attendance> yearlyById(int id) {
+        List<Attendance> attendanceList= attendanceRepository.getMonthlyAttendanceList(id);
+        return attendanceList;
+    }
 }
